@@ -20,12 +20,22 @@ class Action extends React.Component {
 };
 
 class AllOptions extends React.Component {
+  constructor(props){
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    alert(this.props.options);
+  }
+  
   render() {
     return (
       <div>
+        <button onClick={this.handleClick}>What should I do?</button>
         <p>Number of tasks: {this.props.options.length}</p>
         {
-          this.props.options.map((item) =>  <Option key={item} task={item}/>)
+          this.props.options.map((item) => <Option key={item} task={item} />)
         }
       </div>
     )
@@ -41,11 +51,19 @@ class Option extends React.Component {
   };
 };
 class AddOption extends React.Component {
+  handleAddTask(e) {
+    e.preventDefault();
+
+    const task = e.target.elements.option.value.trim();
+    if (task) {
+      alert(task);
+    }
+  }
   render() {
     return (
       <div>
-        <form>
-          <input type="text"></input>
+        <form onSubmit={this.handleAddTask}>
+          <input type="text" name='option'></input>
           <button>Submit</button>
         </form>
       </div>
