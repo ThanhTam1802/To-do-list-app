@@ -10,6 +10,23 @@ class MyApp extends React.Component {
     }
   }
 
+  componentDidMount() {
+    try {
+      const json = localStorage.getItem('options');
+      const options = JSON.parse(json);
+      if (options) {
+        this.setState(() => ({ options }))
+      }
+    } catch (error) {
+      // Doing nothing :)
+    }
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.options.length !== this.state.options) {
+      const json = JSON.stringify(this.state.options);
+      localStorage.setItem('options', json)
+    }
+  }
   handleDeleteOptions() {
     this.setState(() => ({ options: [] }))
   }
@@ -118,6 +135,10 @@ class AddOption extends React.Component {
     const error = this.props.handleAddOpption(option);
 
     this.setState(() => ({ error }));
+
+    if (!error) {
+      e.target.elements.option.value = ''
+    }
   }
   render() {
     return (
