@@ -38,7 +38,9 @@ const reRender = () => {
             <h3>{app.subtitle}</h3>
             <p>{app.option ? 'List of work to do:' : ''}</p>
             <p>{app.option.length}</p>
-            <button disabled={app.option.length === 0} onClick={pickRandomTask}>pick me one task !</button>
+            <button disabled={app.option.length === 0} 
+                    onClick={pickRandomTask}>
+                    pick me one task !</button>
             <button onClick={removeAll}>Remove all</button>
             <ul>
                 {app.option.map((item) => {
