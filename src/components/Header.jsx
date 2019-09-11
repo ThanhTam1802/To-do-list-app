@@ -1,8 +1,10 @@
 import React from 'react';
 const Header = (props) => (
-    <div>
-        <h1>{props.title}</h1>
-        <h2>Help you know that to do !</h2>
+    <div className='header'>
+        <div className='container'>
+            <h1 className='header__title'>{props.title}</h1>
+            <h2 className='header__subtitle'>Help you know that to do today !</h2>
+        </div>
     </div>
 );
 

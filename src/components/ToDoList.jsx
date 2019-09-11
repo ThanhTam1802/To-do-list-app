@@ -77,19 +77,19 @@ class ToDoList extends React.Component {
     return (
       <div>
         <Header title={title} />
+        <div className='container'>
+          <Action hasOptions={this.state.options.length > 0}
+            handlePick={this.handlePick} />
 
-        <Action hasOptions={this.state.options.length > 0}
-          handlePick={this.handlePick} />
+          <AllOptions options={this.state.options}
+            handleDeleteOptions={this.handleDeleteOptions}
+            handleDeleteSingleOption={this.handleDeleteSingleOption} />
 
-        <AllOptions options={this.state.options}
-          handleDeleteOptions={this.handleDeleteOptions}
-          handleDeleteSingleOption={this.handleDeleteSingleOption} />
-
-        <AddOption handleAddOpption={this.handleAddOpption} />
+          <AddOption handleAddOpption={this.handleAddOpption} />
+        </div>
 
         <OptionModal selectedOption={this.state.selectedOption}
           handleCloseModal={this.handleCloseModal} />
-
       </div>
     )
   };
